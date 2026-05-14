@@ -6,17 +6,15 @@ A modern, privacy-first chatbot frontend built with **React + Vite** and styled 
 
 ### 🔐 Authentication Page
 
-| Screenshot 1 | Screenshot 2 |
+| Dark Mode | Light Mode |
 |---|---|
-| ![Auth Page](src/assets/images/Screenshot%202026-05-14%20at%2010.56.10%E2%80%AFAM.png) | ![Auth Page 2](src/assets/images/Screenshot%202026-05-14%20at%204.20.20%E2%80%AFPM.png) |
-
-| Screenshot 3 | Screenshot 4 |
-|---|---|
-| ![Auth Page 3](src/assets/images/Screenshot%202026-05-14%20at%204.20.33%E2%80%AFPM.png) | ![Auth Page 4](src/assets/images/Screenshot%202026-05-14%20at%204.21.19%E2%80%AFPM.png) |
+| ![Login Dark](src/assets/images/login_darkmode.png) | ![Login Light](src/assets/images/login_whitemode.png) |
 
 ### 💬 Chat Interface
 
-![Chat UI](src/assets/images/Screenshot%202026-05-14%20at%204.21.32%E2%80%AFPM.png)
+| Dark Mode | Light Mode |
+|---|---|
+| ![Chat Dark](src/assets/images/privategpt_darkmode.png) | ![Chat Light](src/assets/images/privategpt_lightmode.png) |
 
 ## Install and Run
 
