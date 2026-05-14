@@ -4,17 +4,19 @@ A modern, privacy-first chatbot frontend built with **React + Vite** and styled 
 
 ## Screenshots
 
-> Add your screenshots to `assets/images/` and they will appear here.
-
 ### 🔐 Authentication Page
 
-| Dark Mode | Light Mode |
-|-----------|------------|
-| ![Sign In – Dark](assets/images/auth-dark.png) | ![Sign In – Light](assets/images/auth-light.png) |
+| Screenshot 1 | Screenshot 2 |
+|---|---|
+| ![Auth Page](src/assets/images/Screenshot%202026-05-14%20at%2010.56.10%E2%80%AFAM.png) | ![Auth Page 2](src/assets/images/Screenshot%202026-05-14%20at%204.20.20%E2%80%AFPM.png) |
+
+| Screenshot 3 | Screenshot 4 |
+|---|---|
+| ![Auth Page 3](src/assets/images/Screenshot%202026-05-14%20at%204.20.33%E2%80%AFPM.png) | ![Auth Page 4](src/assets/images/Screenshot%202026-05-14%20at%204.21.19%E2%80%AFPM.png) |
 
 ### 💬 Chat Interface
 
-![Chat UI](assets/images/chat.png)
+![Chat UI](src/assets/images/Screenshot%202026-05-14%20at%204.21.32%E2%80%AFPM.png)
 
 ## Install and Run
 
