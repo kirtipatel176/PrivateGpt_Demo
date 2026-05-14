@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agentic AI - Dev Bypass</title>
+    <script type="module">
+
+      const MOCK_TOKEN = 'dev-bypass-token'
+      const MOCK_USERNAME = 'Test User'
+      const MOCK_STORE_KEY = 'dev-bypass-conversations'
+
+      const readStore = () => {
+        try {
+          const raw = localStorage.getItem(MOCK_STORE_KEY)
+          if (raw) return JSON.parse(raw)
+        } catch {
+          // Ignore malformed local state and fall back to a clean store.
+        }
+        return []
+      }
+
+      const writeStore = (value) => {
+        localStorage.setItem(MOCK_STORE_KEY, JSON.stringify(value))
+      }
+
+      const ensureAuth = () => {
+        localStorage.setItem('token', MOCK_TOKEN)
+        localStorage.setItem('username', MOCK_USERNAME)
+        localStorage.setItem('isSuperadmin', 'false')
+      }
+
+      const response = (body, init = {}) =>
+        new Response(JSON.stringify(body), {
+          status: init.status ?? 200,
+          headers: {
+            'Content-Type': 'application/json',
+            ...(init.headers || {}),
+          },
+        })
+
+      const originalFetch = window.fetch.bind(window)
+
+      window.fetch = async (resource, options = {}) => {
+        const url = typeof resource === 'string' ? new URL(resource, window.location.origin) : new URL(resource.url)
+        const method = (options.method || 'GET').toUpperCase()
+        const path = url.pathname
+
+        if (url.origin === 'http://localhost:8001') {
+          if (path === '/conversations' && method === 'GET') {
+            return response(readStore())
+          }
+
+          if (path === '/conversations' && method === 'POST') {
+            const payload = options.body ? JSON.parse(options.body) : {}
+            const store = readStore()
+            const nextChat = {
+              id: payload.id,
+              title: payload.title || 'New Chat',
+              messages: Array.isArray(payload.messages) ? payload.messages : [],
+            }
+            const index = store.findIndex((chat) => chat.id === nextChat.id)
+            if (index >= 0) store[index] = nextChat
+            else store.unshift(nextChat)
+            writeStore(store)
+            return response(nextChat)
+          }
+
+          if (path.startsWith('/conversations/') && method === 'DELETE') {
+            const chatId = path.split('/').pop()
+            const store = readStore().filter((chat) => chat.id !== chatId)
+            writeStore(store)
+            return response({ ok: true })
+          }
+
+          return response({ detail: 'Mock auth endpoint' }, { status: 404 })
+        }
+
+        if (url.origin === 'http://localhost:8000') {
+          if (path === '/query' && method === 'POST') {
+            const query = url.searchParams.get('query') || 'your request'
+            return response({
+              response: `Mock response for testing the conversation UI.\n\nYou asked: **${query}**\n\n- Backend bypass is active\n- Conversation persistence stays in local storage\n- You can test layout, markdown, and message flow`,
+              tool_display_name: 'Mock Router',
+              tool_icon: '🧪',
+            })
+          }
+
+          if (path === '/upload' && method === 'POST') {
+            return response({ detail: 'Mock upload accepted' })
+          }
+
+          return response({ detail: 'Mock API endpoint' }, { status: 404 })
+        }
+
+        return originalFetch(resource, options)
+      }
+
+      ensureAuth()
+
+      await import('/src/main.jsx')
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+</html>
