@@ -1,6 +1,20 @@
-# React + Vite
+# PrivateGPT – Local AI Chat UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, privacy-first chatbot frontend built with **React + Vite** and styled with **Tailwind CSS v4**. Supports light/dark mode, JWT-based authentication, and connects to a configurable backend API.
+
+## Screenshots
+
+> Add your screenshots to `assets/images/` and they will appear here.
+
+### 🔐 Authentication Page
+
+| Dark Mode | Light Mode |
+|-----------|------------|
+| ![Sign In – Dark](assets/images/auth-dark.png) | ![Sign In – Light](assets/images/auth-light.png) |
+
+### 💬 Chat Interface
+
+![Chat UI](assets/images/chat.png)
 
 ## Install and Run
 
