@@ -46,11 +46,6 @@ If you are developing a production application, we recommend using TypeScript wi
 
 ---
 
-Development mock / production
------------------------------
-
-This repo previously used a local `dev-bypass.html` to intercept fetch calls for UI testing. For production, do not enable that bypass. Instead, control mocking via Vite env vars.
-
 How to configure production endpoints
 ------------------------------------
 
@@ -64,6 +59,5 @@ VITE_AUTH_API=https://auth.yourdomain.com
 Before deploying to production
 -----------------------------
 
-- Remove or stop serving `dev-bypass.html` and any dev-only server proxies.
 - Build with `npm run build` and deploy the `dist/` output.
 
