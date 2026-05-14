@@ -2,6 +2,35 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
+## Install and Run
+
+1. Install dependencies:
+
+```bash
+npm install
+```
+
+2. Start the development server:
+
+```bash
+npm run dev
+```
+
+3. Open the app in your browser:
+
+```text
+http://127.0.0.1:3000
+```
+
+If you want to point the app at your own backend, create a `.env` file in the project root and set:
+
+```env
+VITE_API_BASE=http://localhost:8000
+VITE_AUTH_API=http://localhost:8001
+```
+
+Then restart the dev server.
+
 Currently, two official plugins are available:
 
 - [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
